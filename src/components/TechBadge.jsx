@@ -10,7 +10,7 @@ export function TechBadge({ name, size = 'md' }) {
   return (
     <span
       style={brandVars(name)}
-      className={`group inline-flex items-center rounded-full border border-line bg-bg/60 text-ink/85 transition-colors hover:border-accent/60 ${
+      className={`group inline-flex items-center rounded-md border font-mono border-line bg-bg/60 text-ink/85 transition-colors hover:border-accent/60 ${
         sm ? 'gap-1.5 px-3 py-1 text-xs' : 'gap-2 px-4 py-2 text-sm'
       }`}
     >

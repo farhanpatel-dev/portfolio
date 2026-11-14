@@ -8,7 +8,7 @@ import { external } from '../components/SocialLinks';
 export function Education() {
   const s = sections.education;
   return (
-    <section id="education" aria-labelledby="education-title" className="relative bg-bg py-24 md:py-32">
+    <section id="education" aria-labelledby="education-title" className="relative py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading id="education-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 
@@ -20,14 +20,14 @@ export function Education() {
           className="grid gap-8 md:grid-cols-2"
         >
           {education.map((ed) => (
-            <m.article key={ed.degree} variants={rise} className="glass lift relative overflow-hidden rounded-[2rem] p-8 sm:p-10">
+            <m.article key={ed.degree} variants={rise} className="glass lift relative overflow-hidden rounded-2xl p-8 sm:p-10">
               <LuGraduationCap aria-hidden="true" className="absolute -right-6 -top-6 h-40 w-40 text-accent/10" />
-              <span className="gold-ring grid h-14 w-14 place-items-center rounded-2xl p-[1.5px]">
-                <span className="grid h-full w-full place-items-center rounded-2xl bg-bg">
+              <span className="accent-ring grid h-14 w-14 place-items-center rounded-xl p-px">
+                <span className="grid h-full w-full place-items-center rounded-[11px] bg-bg">
                   <LuGraduationCap className="h-6 w-6 text-muted" aria-hidden="true" />
                 </span>
               </span>
-              <h3 className="mt-6 font-display text-2xl leading-tight text-ink sm:text-3xl">{ed.degree}</h3>
+              <h3 className="mt-6 font-display text-2xl font-semibold leading-tight text-ink sm:text-3xl">{ed.degree}</h3>
               <p className="mt-2 text-lg font-medium">
                 {ed.url ? (
                   <a href={ed.url} {...external} className="text-gradient inline-flex items-center gap-1.5 hover:opacity-80">
@@ -39,7 +39,7 @@ export function Education() {
                   <span className="text-gradient">{ed.institution}</span>
                 )}
               </p>
-              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 text-xs font-medium uppercase tracking-[0.18em] text-muted">
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1 font-mono text-xs text-muted">
                 <span className="inline-flex items-center gap-1.5">
                   <LuCalendar className="h-3.5 w-3.5" aria-hidden="true" />
                   {ed.start} – {ed.end}
@@ -60,7 +60,7 @@ export function Education() {
                   <p className="eyebrow mb-3">Coursework</p>
                   <ul className="flex flex-wrap gap-2">
                     {ed.coursework.map((c) => (
-                      <li key={c} className="rounded-full border border-line bg-bg/60 px-3 py-1 text-xs text-ink/85">{c}</li>
+                      <li key={c} className="rounded-md border border-line bg-bg/60 px-3 py-1 font-mono text-xs text-ink/85">{c}</li>
                     ))}
                   </ul>
                 </div>
@@ -76,7 +76,7 @@ export function Education() {
             <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {certifications.map((c) => (
                 <li key={c.name} className="glass lift rounded-2xl p-6">
-                  <p className="font-display text-xl text-ink">{c.name}</p>
+                  <p className="font-display text-xl font-semibold text-ink">{c.name}</p>
                   <p className="mt-1 text-sm text-muted">{[c.issuer, c.date].filter(Boolean).join(' · ')}</p>
                   {c.url && (
                     <a href={c.url} {...external} className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-muted underline decoration-accent/50 underline-offset-4 hover:text-accent">

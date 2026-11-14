@@ -10,7 +10,7 @@ export function ThemeToggle({ theme, onToggle, className = '' }) {
       onClick={onToggle}
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
       title={dark ? 'Light mode' : 'Dark mode'}
-      className={`grid h-10 w-10 place-items-center rounded-full border border-line text-muted transition-colors hover:border-accent hover:text-accent ${className}`}
+      className={`grid h-10 w-10 place-items-center rounded-lg border border-line text-muted transition-colors hover:border-accent hover:text-accent ${className}`}
     >
       <AnimatePresence mode="wait" initial={false}>
         <m.span

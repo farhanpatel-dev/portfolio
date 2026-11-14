@@ -16,22 +16,6 @@
  * ============================================================================
  */
 
-// ---- Images ---------------------------------------------------------------
-// No photos have been added yet, so the site shows designed placeholders
-// (an "FP" monogram arch, and generated artwork for projects).
-// To add a real photo:
-//   1. Put the file in src/assets/ (WebP preferred, see README for sizes)
-//   2. Uncomment the matching import below
-//   3. Replace `null` with the imported name
-// import profilePhoto from '../assets/profile.webp';
-// import aboutPhoto from '../assets/about.webp';
-// import cropwatchShot from '../assets/projects/cropwatch.webp';
-
-export const images = {
-  profile: null, // e.g. profilePhoto  (TODO: add profile photo)
-  about: null, // e.g. aboutPhoto      (TODO: add secondary photo)
-};
-
 // ---- Identity -------------------------------------------------------------
 export const profile = {
   name: 'Farhan Patel',
@@ -54,6 +38,16 @@ export const profile = {
     'Most recently I completed my M.Sc. in Computer Science at Western University, with coursework in Data Management, Deep Learning for Computer Vision, Artificial Intelligence and Unstructured Data.',
   siteUrl: 'https://farhanpatel-dev.github.io/portfolio/',
   resumeFile: 'resume.pdf', // lives in /public
+};
+
+// ---- Hero code card -------------------------------------------------------------
+// The editor window in the hero renders these values as a small Python class.
+export const codeCard = {
+  filename: 'farhan.py',
+  className: 'SoftwareEngineer',
+  focus: ['Python services', 'ML in production', 'Geospatial APIs'],
+  stack: ['FastAPI', 'PostgreSQL/PostGIS', 'RabbitMQ', 'PyTorch', 'Docker'],
+  motto: 'Ship reliable systems.',
 };
 
 // ---- Contact ----------------------------------------------------------------
@@ -112,7 +106,6 @@ export const experience = [
   {
     company: 'Mobifilia Software LLP',
     initials: 'MS',
-    logo: null, // optional: import a logo from src/assets/logos/
     location: '', // TODO (optional): city of the Mobifilia office
     url: '', // TODO (optional): company website
     roles: [
@@ -155,8 +148,7 @@ export const projects = [
       'Cut CPU inference time by 25% by tuning tile batching and threading, achieving sub-second predictions on standard 512 px images; containerized with Docker and covered by pytest unit and API tests.',
     ],
     tech: ['PyTorch', 'ONNX Runtime', 'FastAPI', 'rasterio', 'MLflow', 'Docker', 'pytest'],
-    image: null, // e.g. cropwatchShot  (TODO: add a screenshot)
-    art: 'fields', // generated artwork used while `image` is null
+    repoPath: 'farhanpatel-dev/cropwatch', // shown as the card's terminal path
     code: 'https://github.com/farhanpatel-dev/cropwatch',
     live: '', // TODO (optional): live demo URL; button stays hidden while empty
   },
@@ -191,13 +183,13 @@ export const certifications = [];
 
 // ---- Section copy (headings shown on the site) --------------------------------
 export const sections = {
-  about: { eyebrow: 'About', title: 'Engineering that', accent: 'holds up' },
-  skills: { eyebrow: 'Skills', title: 'Tools of the', accent: 'craft' },
-  experience: { eyebrow: 'Experience', title: 'Where I have', accent: 'built' },
-  projects: { eyebrow: 'Projects', title: 'Selected', accent: 'work' },
-  education: { eyebrow: 'Education', title: 'Where I', accent: 'studied' },
+  about: { eyebrow: 'about', title: 'Engineering that', accent: 'holds up' },
+  skills: { eyebrow: 'skills', title: 'My tech', accent: 'stack' },
+  experience: { eyebrow: 'experience', title: "Where I've", accent: 'shipped' },
+  projects: { eyebrow: 'projects', title: "Things I've", accent: 'built' },
+  education: { eyebrow: 'education', title: 'Where I', accent: 'studied' },
   contact: {
-    eyebrow: 'Contact',
+    eyebrow: 'contact',
     title: "Let's build something",
     accent: 'together',
     intro: "I'm open to software engineering roles. Send a note and I'll get back to you.",
