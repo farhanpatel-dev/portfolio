@@ -1,6 +1,6 @@
 # Farhan Patel · Portfolio
 
-Personal portfolio site in a "Luxury Beige" design, built with React, Vite, Tailwind CSS and Framer Motion.
+Personal portfolio site with a developer-style design (dark IDE theme, code-editor hero, mono type), built with React, Vite, Tailwind CSS and Framer Motion. No photos are used.
 
 **Live:** https://farhanpatel-dev.github.io/portfolio/
 
@@ -29,22 +29,8 @@ GitHub Actions rebuilds and redeploys automatically (about 1 to 2 minutes). Watc
 
 - An empty string (`''`) or `null` hides that item, so no broken links are shown.
 - Skill and tech names get logos from `src/data/techIcons.js`. A new name with no entry there gets a generic icon; add an entry to give it a brand logo and colour.
-- Replace `public/resume.pdf` to update the "Download Resume" file.
-
-## Add your images
-
-Put images in `src/assets/`, then import them at the top of `portfolio.js` (the import lines are already there, commented out).
-
-| File | Where it shows | Recommended size |
-| --- | --- | --- |
-| `src/assets/profile.webp` | Hero portrait (arched frame) | 720 × 900 px, portrait, WebP |
-| `src/assets/about.webp` | About section | 640 × 800 px, portrait, WebP |
-| `src/assets/projects/cropwatch.webp` | Crop-stress project card | 1200 × 750 px (16:10), WebP |
-| `src/assets/logos/*.webp` (optional) | Company badge in Experience | 96 × 96 px, square |
-
-Until you add them, the site shows designed placeholders: an "FP" monogram arch, contour artwork and generated field-map artwork.
-
-To convert a photo to WebP: `npx sharp-cli -i photo.jpg -o src/assets/profile.webp resize 720 900` (or use squoosh.app).
+- Replace `public/resume.pdf` to update the "Download resume" file.
+- The code-editor card in the hero is generated from `codeCard` in `portfolio.js`.
 
 ## Contact form
 
@@ -88,9 +74,9 @@ The site is served from `/portfolio/`, so `vite.config.js` sets `base: '/portfol
 ## How it's built
 
 - **Prerendering:** `npm run build` renders the page to static HTML (`scripts/prerender.mjs`), so content appears before JavaScript loads, then React hydrates it.
-- **Fonts:** Playfair Display and DM Sans are self-hosted via `@fontsource`, and the above-the-fold files are preloaded.
+- **Fonts:** Space Grotesk (headings), Inter (body) and JetBrains Mono (code and labels) are self-hosted via `@fontsource`, and the above-the-fold files are preloaded.
 - **Animation:** Framer Motion's animation engine loads lazily (`LazyMotion`). All motion respects `prefers-reduced-motion`.
-- **Theme:** light/dark follows the system setting until the visitor toggles it, and the choice is remembered.
+- **Theme:** dark by default with a light option; the visitor's choice is remembered. Colours are CSS variables at the top of `src/index.css`.
 - **Link previews:** `public/og-image.png` (1200 × 630) is generated from `tools/og-image.html`.
 
 ```
@@ -102,7 +88,7 @@ portfolio/
 ├── src/
 │   ├── data/portfolio.js          # ← all site content
 │   ├── data/techIcons.js          # tech name → logo + brand colour
-│   ├── components/                # Navbar, cursor, cards, buttons, artwork…
+│   ├── components/                # Navbar, code card, cursor, badges, buttons…
 │   ├── sections/                  # Hero, About, Skills, Experience, Projects…
 │   ├── hooks/                     # theme, active section, scroll state
 │   ├── App.jsx · main.jsx · entry-server.jsx

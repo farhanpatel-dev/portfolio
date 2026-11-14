@@ -8,7 +8,7 @@ export function ScrollProgress() {
     <m.div
       aria-hidden="true"
       style={{ scaleX }}
-      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-linear-to-r from-caramel via-champagne to-caramel"
+      className="fixed inset-x-0 top-0 z-[70] h-[3px] origin-left bg-linear-to-r from-accent via-accent-2 to-accent"
     />
   );
 }

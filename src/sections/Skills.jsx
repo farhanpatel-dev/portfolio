@@ -30,7 +30,7 @@ export function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-title"
-      className="relative overflow-hidden bg-linear-to-b from-bg via-bg-alt to-bg py-24 md:py-32"
+      className="relative overflow-hidden bg-bg-alt/60 py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading id="skills-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
@@ -48,14 +48,14 @@ export function Skills() {
                   aria-selected={selected}
                   aria-controls="skills-panel"
                   onClick={() => setActive(cat)}
-                  className={`relative isolate rounded-full px-5 py-2.5 text-sm font-medium tracking-wide transition-colors ${
-                    selected ? 'text-espresso' : 'border border-line text-muted hover:border-accent hover:text-ink'
+                  className={`relative isolate rounded-lg px-4 py-2 font-mono text-[13px] transition-colors ${
+                    selected ? 'text-on-accent' : 'border border-line text-muted hover:border-accent hover:text-ink'
                   }`}
                 >
                   {selected && (
                     <m.span
                       layoutId="skill-tab"
-                      className="absolute inset-0 -z-10 rounded-full bg-linear-to-r from-caramel to-champagne shadow-[0_8px_24px_-10px_rgba(176,138,91,0.9)]"
+                      className="absolute inset-0 -z-10 rounded-lg bg-linear-to-r from-[var(--btn-from)] to-[var(--btn-to)]"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -83,14 +83,14 @@ export function Skills() {
                   animate={{ opacity: 1, y: 0, scale: 1, transition: { delay: i * 0.025, duration: 0.45 } }}
                   exit={{ opacity: 0, scale: 0.94, transition: { duration: 0.2 } }}
                   style={brandVars(name)}
-                  className="group glass lift flex items-center gap-3 rounded-2xl px-4 py-3.5"
+                  className="group glass lift flex items-center gap-3 rounded-xl px-4 py-3.5"
                 >
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-line bg-bg/70">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-lg border border-line bg-bg/70">
                     <Icon className="brand-hover h-[22px] w-[22px]" aria-hidden="true" />
                   </span>
                   <span className="flex min-w-0 flex-col">
                     <span className="text-sm font-medium leading-tight text-ink">{name}</span>
-                    {active === ALL && <span className="mt-1 truncate text-[0.6rem] uppercase tracking-[0.18em] text-muted">{category}</span>}
+                    {active === ALL && <span className="mt-0.5 truncate font-mono text-[0.68rem] text-muted">{category}</span>}
                   </span>
                 </m.li>
               );
@@ -108,7 +108,7 @@ export function Skills() {
             return (
               <span key={`${name}-${i}`} style={brandVars(name)} className="group flex items-center gap-3 text-muted">
                 <Icon className="brand-hover h-7 w-7" />
-                <span className="font-display text-lg italic">{name}</span>
+                <span className="font-mono text-sm">{name}</span>
               </span>
             );
           })}

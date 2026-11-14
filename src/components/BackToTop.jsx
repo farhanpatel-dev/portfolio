@@ -14,7 +14,7 @@ export function BackToTop() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 16 }}
-          className="btn-lux fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full"
+          className="btn-primary fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-lg"
         >
           <LuArrowUp className="h-5 w-5" aria-hidden="true" />
         </m.a>

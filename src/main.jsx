@@ -1,9 +1,9 @@
 import { StrictMode } from 'react';
 import { createRoot, hydrateRoot } from 'react-dom/client';
 // Self-hosted fonts (bundled woff2, no render-blocking third-party request).
-import '@fontsource-variable/dm-sans';
-import '@fontsource/playfair-display/400.css';
-import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource-variable/space-grotesk';
+import '@fontsource-variable/inter';
+import '@fontsource-variable/jetbrains-mono';
 import './index.css';
 import App from './App.jsx';
 

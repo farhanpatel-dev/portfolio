@@ -20,9 +20,9 @@ if (!template.includes('<!--app-html-->')) {
 // reflow when they arrive. Vite hashes the file names, so look them up.
 const assets = await readdir(path.join(root, 'dist', 'assets'));
 const critical = [
-  /^playfair-display-latin-400-normal-.*\.woff2$/,
-  /^playfair-display-latin-400-italic-.*\.woff2$/,
-  /^dm-sans-latin-wght-normal-.*\.woff2$/,
+  /^space-grotesk-latin-wght-normal-.*\.woff2$/,
+  /^inter-latin-wght-normal-.*\.woff2$/,
+  /^jetbrains-mono-latin-wght-normal-.*\.woff2$/,
 ];
 // Read the base path (e.g. /portfolio/) from the built script tag, so this
 // follows `base` in vite.config.js automatically.

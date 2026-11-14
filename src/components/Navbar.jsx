@@ -10,7 +10,7 @@ import { SocialLinks } from './SocialLinks';
 const ids = navLinks.map((l) => l.id);
 
 /**
- * Sticky navbar: transparent at the top, frosted cream once scrolled.
+ * Sticky navbar: transparent at the top, frosted once scrolled.
  * Highlights the section in view; full-screen slide-in menu on mobile.
  */
 export function Navbar({ theme, onToggleTheme }) {
@@ -38,7 +38,7 @@ export function Navbar({ theme, onToggleTheme }) {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'border-b border-line bg-cream/75 shadow-[0_8px_30px_-20px_rgba(122,92,62,0.5)] backdrop-blur-xl dark:bg-espresso/75'
+          ? 'border-b border-line bg-bg/75 backdrop-blur-xl'
           : 'border-b border-transparent bg-transparent'
       }`}
     >
@@ -46,12 +46,12 @@ export function Navbar({ theme, onToggleTheme }) {
         {/* Logo: back to top */}
         {/* Accessible name = visible name + "back to top" (initials badge is decorative) */}
         <a href="#top" className="group flex items-center gap-3">
-          <span aria-hidden="true" className="gold-ring grid h-10 w-10 place-items-center rounded-full p-[1.5px]">
-            <span className="grid h-full w-full place-items-center rounded-full bg-bg font-display text-sm italic text-ink">
+          <span aria-hidden="true" className="accent-ring grid h-10 w-10 place-items-center rounded-lg p-px">
+            <span className="grid h-full w-full place-items-center rounded-[7px] bg-bg font-mono text-xs font-bold text-accent">
               {profile.initials}
             </span>
           </span>
-          <span className="sr-only font-display text-lg tracking-wide text-ink sm:not-sr-only">{profile.name}</span>
+          <span className="sr-only font-mono text-sm text-ink sm:not-sr-only">{profile.name}</span>
           <span className="sr-only">, back to top</span>
         </a>
 
@@ -64,14 +64,14 @@ export function Navbar({ theme, onToggleTheme }) {
                 <a
                   href={`#${link.id}`}
                   aria-current={isActive ? 'true' : undefined}
-                  className={`relative isolate rounded-full px-4 py-2 text-sm font-medium tracking-wide transition-colors ${
+                  className={`relative isolate rounded-lg px-4 py-2 font-mono text-[13px] transition-colors ${
                     isActive ? 'text-ink' : 'text-muted hover:text-ink'
                   }`}
                 >
                   {isActive && (
                     <m.span
                       layoutId="nav-active"
-                      className="absolute inset-0 -z-10 rounded-full border border-accent/40 bg-accent/10"
+                      className="absolute inset-0 -z-10 rounded-lg border border-accent/40 bg-accent/10"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -90,7 +90,7 @@ export function Navbar({ theme, onToggleTheme }) {
             aria-label="Open menu"
             aria-expanded={open}
             aria-controls="mobile-menu"
-            className="grid h-10 w-10 place-items-center rounded-full border border-line text-ink lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink lg:hidden"
           >
             <LuMenu className="h-5 w-5" aria-hidden="true" />
           </button>
@@ -111,15 +111,15 @@ export function Navbar({ theme, onToggleTheme }) {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-[90] flex h-dvh flex-col bg-linear-to-br from-ivory via-cream to-sand px-6 py-5 dark:from-espresso dark:via-[#3a2b21] dark:to-[#2a1e17] lg:hidden"
+            className="fixed inset-0 z-[90] flex h-dvh flex-col bg-bg px-6 py-5 lg:hidden"
           >
             <div className="flex items-center justify-between">
-              <span className="font-display text-xl italic text-ink">{profile.name}</span>
+              <span className="font-mono text-base text-ink">{profile.name}</span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
-                className="grid h-11 w-11 place-items-center rounded-full border border-line text-ink"
+                className="grid h-11 w-11 place-items-center rounded-lg border border-line text-ink"
               >
                 <LuX className="h-5 w-5" aria-hidden="true" />
               </button>
@@ -137,11 +137,11 @@ export function Navbar({ theme, onToggleTheme }) {
                     ref={i === 0 ? firstLinkRef : undefined}
                     href={`#${link.id}`}
                     onClick={() => setOpen(false)}
-                    className={`flex items-baseline gap-4 py-2 font-display text-4xl ${
-                      active === link.id ? 'text-gradient italic' : 'text-ink'
+                    className={`flex items-baseline gap-4 py-2 font-display text-4xl font-semibold ${
+                      active === link.id ? 'text-gradient' : 'text-ink'
                     }`}
                   >
-                    <span className="font-sans text-xs tracking-[0.3em] text-muted">0{i + 1}</span>
+                    <span className="font-mono text-xs text-accent">0{i + 1}.</span>
                     {link.label}
                   </a>
                 </m.li>

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { m, useMotionValue, useSpring } from 'framer-motion';
 
 /**
- * Small Caramel dot with a soft trailing ring.
+ * Small accent dot with a soft trailing ring.
  * Only on devices with a precise pointer and when reduced motion is off;
  * everyone else keeps the normal cursor.
  */
@@ -50,12 +50,12 @@ export function CustomCursor() {
         style={{ x: ringX, y: ringY }}
         animate={{ scale: hovering ? 1.8 : 1, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.3 }}
-        className="absolute -left-4 -top-4 h-8 w-8 rounded-full border border-caramel/70 bg-champagne/5"
+        className="absolute -left-4 -top-4 h-8 w-8 rounded-full border border-accent/70 bg-accent/5"
       />
       <m.div
         style={{ x, y }}
         animate={{ scale: hovering ? 0.5 : 1, opacity: visible ? 1 : 0 }}
-        className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-caramel"
+        className="absolute -left-1 -top-1 h-2 w-2 rounded-full bg-accent"
       />
     </div>
   );

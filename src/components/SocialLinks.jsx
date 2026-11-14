@@ -26,7 +26,7 @@ export function SocialLinks({ className = '' }) {
             aria-label={label}
             title={label}
             {...(ext ? external : {})}
-            className="grid h-11 w-11 place-items-center rounded-full border border-line text-muted transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_24px_-6px_var(--glow)]"
+            className="grid h-11 w-11 place-items-center rounded-lg border border-line text-muted transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:text-accent hover:shadow-[0_0_24px_-6px_var(--glow)]"
           >
             <Icon className="h-[18px] w-[18px]" aria-hidden="true" />
           </a>

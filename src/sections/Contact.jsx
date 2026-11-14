@@ -26,9 +26,9 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative overflow-hidden bg-linear-to-b from-bg via-bg-alt to-bg-alt py-24 md:py-32"
+      className="relative overflow-hidden py-24 md:py-32"
     >
-      <div aria-hidden="true" className="animate-drift-b absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-champagne/20 blur-[120px]" />
+      <div aria-hidden="true" className="animate-drift-b absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading id="contact-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} intro={s.intro} />
 
@@ -42,14 +42,14 @@ export function Contact() {
           >
             {cards.map(({ label, value, href, Icon, ext }) => (
               <m.li key={label} variants={rise}>
-                <a href={href} {...(ext ? external : {})} className="glass lift group flex items-center gap-5 rounded-2xl p-5">
-                  <span className="gold-ring grid h-12 w-12 shrink-0 place-items-center rounded-xl p-[1.5px]">
-                    <span className="grid h-full w-full place-items-center rounded-xl bg-bg text-muted transition-colors group-hover:text-accent">
+                <a href={href} {...(ext ? external : {})} className="glass lift group flex items-center gap-5 rounded-xl p-5">
+                  <span className="accent-ring grid h-12 w-12 shrink-0 place-items-center rounded-lg p-px">
+                    <span className="grid h-full w-full place-items-center rounded-[7px] bg-bg text-muted transition-colors group-hover:text-accent">
                       <Icon className="h-5 w-5" aria-hidden="true" />
                     </span>
                   </span>
                   <span className="min-w-0">
-                    <span className="eyebrow block text-[0.65rem]">{label}</span>
+                    <span className="eyebrow block text-[0.7rem]">{label}</span>
                     <span className="block truncate text-base font-medium text-ink">{value}</span>
                   </span>
                   {ext && <span className="sr-only"> (opens in a new tab)</span>}
@@ -119,7 +119,7 @@ function ContactForm() {
     }
   };
 
-  const field = 'w-full rounded-xl border border-line bg-bg/70 px-4 py-3 text-ink placeholder:text-ink/45 transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30';
+  const field = 'w-full rounded-lg border border-line bg-bg/70 px-4 py-3 font-mono text-sm text-ink placeholder:text-ink/45 transition focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30';
 
   return (
     <m.form
@@ -129,11 +129,11 @@ function ContactForm() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className="glass relative rounded-[2rem] p-7 sm:p-10"
+      className="glass relative rounded-2xl p-7 sm:p-10"
       aria-describedby="form-status"
     >
-      <h3 className="font-display text-3xl text-ink">
-        Send a <em className="text-gradient italic">message</em>
+      <h3 className="font-display text-3xl font-bold text-ink">
+        Send a <span className="text-gradient">message</span>
       </h3>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -159,7 +159,7 @@ function ContactForm() {
       {/* honeypot (hidden from people and screen readers) */}
       <input type="text" name="_gotcha" value={values._gotcha} onChange={update} tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
 
-      <button type="submit" disabled={status === 'sending'} className="btn-lux mt-8 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold tracking-wide disabled:opacity-70">
+      <button type="submit" disabled={status === 'sending'} className="btn-primary mt-8 inline-flex items-center gap-2 rounded-lg px-7 py-3 font-mono text-sm font-semibold disabled:opacity-70">
         {status === 'sending' ? <LuLoaderCircle className="h-4 w-4 animate-spin" aria-hidden="true" /> : <LuSend className="h-4 w-4" aria-hidden="true" />}
         {status === 'sending' ? 'Sending…' : 'Send message'}
       </button>

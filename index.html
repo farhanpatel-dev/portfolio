@@ -9,8 +9,7 @@
     <meta name="description" content="Farhan Patel is a software engineer in Toronto building reliable Python services, geospatial APIs and production machine learning. M.Sc. Computer Science, Western University." />
     <meta name="author" content="Farhan Patel" />
     <link rel="canonical" href="https://farhanpatel-dev.github.io/portfolio/" />
-    <meta name="theme-color" content="#FAF6EF" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#2E2119" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0A0E14" />
 
     <!-- Open Graph (LinkedIn, WhatsApp, Facebook) -->
     <meta property="og:type" content="website" />
@@ -50,13 +49,12 @@
       }
     </script>
 
-    <!-- Apply the saved or system theme before first paint (no flash). -->
+    <!-- Dark by default; apply a saved "light" choice before first paint (no flash). -->
     <script>
       (function () {
         var t = null;
         try { t = localStorage.getItem('fp-theme'); } catch (e) {}
-        var dark = t ? t === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (dark) document.documentElement.classList.add('dark');
+        if (t !== 'light') document.documentElement.classList.add('dark');
       })();
     </script>
   </head>
