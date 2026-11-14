@@ -59,8 +59,8 @@ export const contact = {
   phone: '',
   phoneDisplay: '',
   showPhone: false,
-  location: 'Toronto, ON',
-  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Toronto%2C%20ON',
+  location: 'Canada',
+  mapsUrl: 'https://www.google.com/maps/search/?api=1&query=Canada',
   linkedin: 'https://www.linkedin.com/in/patel-farhan',
   github: 'https://github.com/farhanpatel-dev',
   // Formspree form id (the part after formspree.io/f/). Leave '' to fall back
