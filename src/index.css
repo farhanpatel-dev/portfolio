@@ -1,0 +1,263 @@
+@import "tailwindcss";
+
+/* Dark mode is driven by a `.dark` class on <html> (see useTheme). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------------------
+   Luxury Beige palette + fonts, exposed as Tailwind utilities
+   (bg-ivory, text-mocha, border-sand, font-display, ...)
+--------------------------------------------------------------------------- */
+@theme {
+  --color-ivory: #faf6ef;
+  --color-cream: #f3ebdd;
+  --color-sand: #e8d9c0;
+  --color-latte: #d4bc96;
+  --color-caramel: #b08a5b;
+  --color-mocha: #7a5c3e;
+  --color-espresso: #2e2119;
+  --color-champagne: #c9a227;
+
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans Variable", "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --ease-lux: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Semantic tokens that swap between light and dark mode. */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-card: var(--card);
+}
+
+:root {
+  --bg: #faf6ef; /* Ivory */
+  --bg-alt: #f3ebdd; /* Cream */
+  --ink: #2e2119; /* Espresso */
+  --muted: #7a5c3e; /* Mocha: 6.3:1 on Ivory, safe for small text */
+  --line: #e8d9c0; /* Sand */
+  --accent: #b08a5b; /* Caramel */
+  --card: rgb(250 246 239 / 0.62);
+  --glow: rgb(201 162 39 / 0.28);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #2e2119; /* Espresso */
+  --bg-alt: #3a2b21;
+  --ink: #f3ebdd; /* Cream */
+  --muted: #d4bc96; /* Latte */
+  --line: rgb(212 188 150 / 0.2);
+  --accent: #c9a227; /* Champagne */
+  --card: rgb(66 49 38 / 0.55);
+  --glow: rgb(201 162 39 / 0.22);
+  color-scheme: dark;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem; /* keeps headings clear of the sticky navbar */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.5s var(--ease-lux), color 0.5s var(--ease-lux);
+}
+
+::selection {
+  background: var(--color-champagne);
+  color: var(--color-espresso);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Paper / grain texture across the whole page (fixed, non-interactive). */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.13 0 0 0 0 0.1 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.dark body::after {
+  mix-blend-mode: screen;
+  opacity: 0.05;
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable "luxury" utilities
+--------------------------------------------------------------------------- */
+@utility text-gradient {
+  background-image: linear-gradient(100deg, #7a5c3e 0%, #b08a5b 55%, #c9a227 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.dark .text-gradient {
+  background-image: linear-gradient(100deg, #e6c65a 0%, #d4bc96 50%, #f3ebdd 100%);
+}
+
+/* Small uppercase labels above headings. */
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Frosted glass card. */
+@utility glass {
+  background: var(--card);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px -24px rgb(122 92 62 / 0.45), 0 2px 6px -2px rgb(122 92 62 / 0.12);
+}
+
+/* Lift + warm glow on hover. */
+@utility lift {
+  transition: transform 0.5s var(--ease-lux), box-shadow 0.5s var(--ease-lux), border-color 0.5s;
+  &:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--accent) 55%, transparent);
+    box-shadow: 0 28px 50px -24px rgb(122 92 62 / 0.5), 0 0 0 1px var(--glow), 0 0 36px -6px var(--glow);
+  }
+}
+
+/* Caramel -> Champagne gradient button with a shimmer sweep. */
+@utility btn-lux {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background-image: linear-gradient(110deg, #b08a5b 0%, #c9a227 100%);
+  color: #2e2119; /* 5:1+ on both gradient ends */
+  box-shadow: 0 10px 24px -12px rgb(176 138 91 / 0.9);
+  transition: transform 0.4s var(--ease-lux), box-shadow 0.4s var(--ease-lux);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transform: translateX(-130%) skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.6), transparent);
+    transition: transform 0.9s var(--ease-lux);
+  }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px -12px rgb(201 162 39 / 0.9);
+  }
+  &:hover::after {
+    transform: translateX(130%) skewX(-20deg);
+  }
+}
+
+/* Outline companion button. */
+@utility btn-ghost {
+  border: 1px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  color: var(--ink);
+  transition: background-color 0.4s, border-color 0.4s, transform 0.4s var(--ease-lux);
+  &:hover {
+    background-color: color-mix(in srgb, var(--accent) 12%, transparent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+}
+
+/* Icon that turns its brand colour on hover of the parent `.group`. */
+@utility brand-hover {
+  color: var(--muted);
+  transition: color 0.35s, transform 0.35s var(--ease-lux);
+  :where(.group):hover &,
+  :where(.group):focus-visible & {
+    color: var(--brand);
+    transform: scale(1.12);
+  }
+  .dark :where(.group):hover &,
+  .dark :where(.group):focus-visible & {
+    color: var(--brand-dark);
+  }
+}
+
+/* Gold ring used around the portrait. */
+@utility gold-ring {
+  background-image: conic-gradient(from 140deg, #c9a227, #f3ebdd, #b08a5b, #c9a227, #d4bc96, #c9a227);
+}
+
+/* ---------------------------------------------------------------------------
+   Keyframes
+--------------------------------------------------------------------------- */
+@keyframes drift-a {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(6%, -8%) scale(1.08); }
+  66% { transform: translate(-5%, 6%) scale(0.95); }
+}
+@keyframes drift-b {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-8%, -6%) scale(1.12); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-drift-a { animation: drift-a 26s ease-in-out infinite; }
+.animate-drift-b { animation: drift-b 32s ease-in-out infinite; }
+.animate-marquee { animation: marquee 45s linear infinite; }
+.animate-scroll-dot { animation: scroll-dot 2s var(--ease-lux) infinite; }
+.animate-spin-slow { animation: spin-slow 18s linear infinite; }
+
+.marquee:hover .animate-marquee { animation-play-state: paused; }
+
+/* Custom cursor: native cursor hidden only when the JS cursor is active. */
+html.custom-cursor,
+html.custom-cursor a,
+html.custom-cursor button,
+html.custom-cursor [role="tab"] {
+  cursor: none;
+}
+html.custom-cursor input,
+html.custom-cursor textarea {
+  cursor: text;
+}
+
+/* ---------------------------------------------------------------------------
+   Respect users who ask for less motion
+--------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
