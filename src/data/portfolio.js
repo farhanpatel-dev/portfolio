@@ -150,7 +150,7 @@ export const projects = [
     tech: ['Python', 'SQL', 'DuckDB', 'Pandas', 'Streamlit', 'pytest'],
     repoPath: 'farhanpatel-dev/ga4-ecommerce-analytics',
     code: 'https://github.com/farhanpatel-dev/ga4-ecommerce-analytics',
-    live: '',
+    live: 'https://ga4-ecommerce-analytics.streamlit.app/',
   },
   {
     name: 'Consumer Complaint Warehouse & Hybrid Search',
