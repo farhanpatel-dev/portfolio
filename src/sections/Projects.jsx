@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import { SiGithub } from 'react-icons/si';
 import { LuCalendar, LuChevronDown, LuExternalLink, LuFolderGit2 } from 'react-icons/lu';
@@ -7,13 +7,8 @@ import { SectionHeading } from '../components/SectionHeading';
 import { TechBadge } from '../components/TechBadge';
 import { external } from '../components/SocialLinks';
 
-const ALL = 'All';
-
 export function Projects() {
   const s = sections.projects;
-  const [filter, setFilter] = useState(ALL);
-  const techs = useMemo(() => [ALL, ...new Set(projects.flatMap((p) => p.tech))], []);
-  const shown = filter === ALL ? projects : projects.filter((p) => p.tech.includes(filter));
   // One project gets a centred wide card; two or more use a grid.
   const single = projects.length === 1;
 
@@ -22,28 +17,9 @@ export function Projects() {
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading id="projects-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 
-        {/* Technology filter appears once there are 3+ projects */}
-        {projects.length > 2 && (
-          <div className="mb-10 flex flex-wrap justify-center gap-2" role="group" aria-label="Filter projects by technology">
-            {techs.map((t) => (
-              <button
-                key={t}
-                type="button"
-                aria-pressed={filter === t}
-                onClick={() => setFilter(t)}
-                className={`rounded-lg px-4 py-2 font-mono text-xs transition-colors ${
-                  filter === t ? 'btn-primary' : 'border border-line text-muted hover:border-accent hover:text-ink'
-                }`}
-              >
-                {t}
-              </button>
-            ))}
-          </div>
-        )}
-
         <m.div layout className={single ? 'mx-auto max-w-2xl' : `grid items-start gap-6 md:grid-cols-2 ${projects.length > 2 ? 'lg:grid-cols-3' : ''}`}>
           <AnimatePresence mode="popLayout">
-            {shown.map((p) => (
+            {projects.map((p) => (
               <ProjectCard key={p.name} project={p} />
             ))}
           </AnimatePresence>
