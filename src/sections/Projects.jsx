@@ -41,7 +41,7 @@ export function Projects() {
           </div>
         )}
 
-        <m.div layout className={single ? 'mx-auto max-w-4xl' : 'grid gap-8 md:grid-cols-2 xl:grid-cols-3'}>
+        <m.div layout className={single ? 'mx-auto max-w-4xl' : `grid gap-8 md:grid-cols-2 ${projects.length > 2 ? 'xl:grid-cols-3' : ''}`}>
           <AnimatePresence mode="popLayout">
             {shown.map((p) => (
               <ProjectCard key={p.name} project={p} />
