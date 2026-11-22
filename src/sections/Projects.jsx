@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { AnimatePresence, m } from 'framer-motion';
 import { SiGithub } from 'react-icons/si';
-import { LuCalendar, LuExternalLink, LuFolderGit2 } from 'react-icons/lu';
+import { LuCalendar, LuChevronDown, LuExternalLink, LuFolderGit2 } from 'react-icons/lu';
 import { projects, sections } from '../data/portfolio';
 import { SectionHeading } from '../components/SectionHeading';
 import { TechBadge } from '../components/TechBadge';
@@ -41,7 +41,7 @@ export function Projects() {
           </div>
         )}
 
-        <m.div layout className={single ? 'mx-auto max-w-4xl' : `grid gap-8 md:grid-cols-2 ${projects.length > 2 ? 'xl:grid-cols-3' : ''}`}>
+        <m.div layout className={single ? 'mx-auto max-w-2xl' : `grid items-start gap-6 md:grid-cols-2 ${projects.length > 2 ? 'lg:grid-cols-3' : ''}`}>
           <AnimatePresence mode="popLayout">
             {shown.map((p) => (
               <ProjectCard key={p.name} project={p} />
@@ -54,6 +54,8 @@ export function Projects() {
 }
 
 function ProjectCard({ project: p }) {
+  const [open, setOpen] = useState(false);
+  const listId = `highlights-${p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
   return (
     <m.article
       layout
@@ -65,7 +67,7 @@ function ProjectCard({ project: p }) {
       className="glass lift flex flex-col overflow-hidden rounded-2xl"
     >
       {/* Terminal-style header: repo path + quick links */}
-      <div className="flex items-center gap-3 border-b border-line bg-bg-alt/80 px-5 py-3 font-mono text-xs">
+      <div className="flex items-center gap-3 border-b border-line bg-bg-alt/80 px-4 py-2.5 font-mono text-xs">
         <LuFolderGit2 className="h-4 w-4 shrink-0 text-accent" aria-hidden="true" />
         <span className="truncate text-muted">
           <span className="text-accent">~/</span>
@@ -79,22 +81,35 @@ function ProjectCard({ project: p }) {
         )}
       </div>
 
-      <div className="flex flex-1 flex-col p-7 sm:p-9">
-        <h3 className="font-display text-2xl font-semibold leading-tight text-ink sm:text-3xl">{p.name}</h3>
-        <p className="mt-4 text-muted">{p.description}</p>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <h3 className="font-display text-lg font-semibold leading-snug text-ink sm:text-xl">{p.name}</h3>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{p.description}</p>
 
+        {/* Highlights stay collapsed so the cards stay short; still in the DOM for crawlers */}
         {p.highlights?.length > 0 && (
-          <ul className="mt-6 space-y-3">
-            {p.highlights.map((h) => (
-              <li key={h} className="flex gap-3 text-[0.95rem] leading-relaxed text-ink/85">
-                <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-accent">▹</span>
-                {h}
-              </li>
-            ))}
-          </ul>
+          <div className="mt-3">
+            <button
+              type="button"
+              aria-expanded={open}
+              aria-controls={listId}
+              onClick={() => setOpen((o) => !o)}
+              className="inline-flex items-center gap-1.5 font-mono text-xs text-accent hover:underline"
+            >
+              <LuChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
+              {open ? 'Hide' : 'Key results'} ({p.highlights.length})
+            </button>
+            <ul id={listId} hidden={!open} className="mt-3 space-y-2">
+              {p.highlights.map((h) => (
+                <li key={h} className="flex gap-2 text-sm leading-relaxed text-ink/85">
+                  <span aria-hidden="true" className="mt-0.5 shrink-0 font-mono text-accent">▹</span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
 
-        <ul className="mt-7 flex flex-wrap gap-2" aria-label="Tech stack">
+        <ul className="mt-4 flex flex-wrap gap-1.5" aria-label="Tech stack">
           {p.tech.map((t) => (
             <li key={t}>
               <TechBadge name={t} size="sm" />
@@ -104,16 +119,16 @@ function ProjectCard({ project: p }) {
 
         {/* Buttons only render when a link exists, so none are ever broken */}
         {(p.code || p.live) && (
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-auto flex flex-wrap gap-2 pt-5">
             {p.code && (
-              <a href={p.code} {...external} className="btn-ghost inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-mono text-sm font-semibold">
+              <a href={p.code} {...external} className="btn-ghost inline-flex items-center gap-2 rounded-lg px-4 py-2 font-mono text-xs font-semibold">
                 <SiGithub className="h-4 w-4" aria-hidden="true" />
                 Code
                 <span className="sr-only"> for {p.name} (opens in a new tab)</span>
               </a>
             )}
             {p.live && (
-              <a href={p.live} {...external} className="btn-primary inline-flex items-center gap-2 rounded-lg px-5 py-2.5 font-mono text-sm font-semibold">
+              <a href={p.live} {...external} className="btn-primary inline-flex items-center gap-2 rounded-lg px-4 py-2 font-mono text-xs font-semibold">
                 <LuExternalLink className="h-4 w-4" aria-hidden="true" />
                 Live demo
                 <span className="sr-only"> of {p.name} (opens in a new tab)</span>
