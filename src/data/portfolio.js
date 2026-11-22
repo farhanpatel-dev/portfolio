@@ -138,6 +138,21 @@ export const experience = [
 // ---- Projects -----------------------------------------------------------------
 export const projects = [
   {
+    name: 'GA4 Ecommerce Funnel, Attribution & Anomaly Analytics',
+    date: 'Nov 2026',
+    description:
+      'Product and marketing analytics on a GA4-schema ecommerce export (856k events) run locally on DuckDB, from a sessionized SQL library to a Streamlit dashboard and a stakeholder readout.',
+    highlights: [
+      'Wrote a sessionized SQL library over nested GA4 event_params and items, with a BigQuery-style dry run that reports files and bytes scanned before every query.',
+      'Located a 38% mobile conversion gap at the payment and purchase steps with Holm-corrected z-tests, sized at ~$33k (17% of revenue), and caught a one-day mobile payment outage with robust STL anomaly detection.',
+      'Compared five attribution models (incl. exact Markov removal effect and Shapley) and split revenue changes exactly with an LMDI metric tree; validated every method against planted ground truth across 56 tests.',
+    ],
+    tech: ['Python', 'SQL', 'DuckDB', 'Pandas', 'Streamlit', 'pytest'],
+    repoPath: 'farhanpatel-dev/ga4-ecommerce-analytics',
+    code: 'https://github.com/farhanpatel-dev/ga4-ecommerce-analytics',
+    live: '',
+  },
+  {
     name: 'Consumer Complaint Warehouse & Hybrid Search',
     date: 'Nov 2026',
     description:
