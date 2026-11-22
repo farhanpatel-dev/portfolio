@@ -10,7 +10,7 @@ const techCount = skills.reduce((n, g) => n + g.items.length, 0);
 export function About() {
   const s = sections.about;
   return (
-    <section id="about" aria-labelledby="about-title" className="relative py-24 md:py-32">
+    <section id="about" aria-labelledby="about-title" className="relative py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading id="about-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 

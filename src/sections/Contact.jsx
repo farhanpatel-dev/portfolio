@@ -26,7 +26,7 @@ export function Contact() {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-16 md:py-20"
     >
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading id="contact-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} intro={s.intro} />
