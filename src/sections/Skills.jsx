@@ -9,7 +9,7 @@ export function Skills() {
   const s = sections.skills;
 
   return (
-    <section id="skills" aria-labelledby="skills-title" className="relative py-24 md:py-32">
+    <section id="skills" aria-labelledby="skills-title" className="relative py-16 md:py-20">
       <div className="mx-auto max-w-4xl px-5 sm:px-8">
         <SectionHeading id="skills-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 

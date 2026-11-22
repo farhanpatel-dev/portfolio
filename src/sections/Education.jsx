@@ -8,7 +8,7 @@ import { external } from '../components/SocialLinks';
 export function Education() {
   const s = sections.education;
   return (
-    <section id="education" aria-labelledby="education-title" className="relative py-24 md:py-32">
+    <section id="education" aria-labelledby="education-title" className="relative py-16 md:py-20">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading id="education-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 

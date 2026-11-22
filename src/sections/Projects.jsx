@@ -18,7 +18,7 @@ export function Projects() {
   const single = projects.length === 1;
 
   return (
-    <section id="projects" aria-labelledby="projects-title" className="relative bg-bg-alt/60 py-24 md:py-32">
+    <section id="projects" aria-labelledby="projects-title" className="relative bg-bg-alt/60 py-16 md:py-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <SectionHeading id="projects-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} />
 
