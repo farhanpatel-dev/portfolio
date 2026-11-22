@@ -35,6 +35,8 @@ const icons = {
   // Data & Messaging
   SQL: { Icon: LuDatabase, color: '#B08A5B', dark: '#C9A227' },
   'PostgreSQL/PostGIS': { Icon: SiPostgresql, color: '#4169E1', dark: '#7D9BFF', brand: true },
+  'PostgreSQL/pgvector': { Icon: SiPostgresql, color: '#4169E1', dark: '#7D9BFF' },
+  dbt: { Icon: LuWorkflow, color: '#FF694B' }, // brand mark not in this react-icons version
   MongoDB: { Icon: SiMongodb, color: '#47A248', brand: true },
   MySQL: { Icon: SiMysql, color: '#4479A1', dark: '#7FB0D6', brand: true },
   RabbitMQ: { Icon: SiRabbitmq, color: '#FF6600', brand: true },

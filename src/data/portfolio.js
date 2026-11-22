@@ -138,6 +138,21 @@ export const experience = [
 // ---- Projects -----------------------------------------------------------------
 export const projects = [
   {
+    name: 'Consumer Complaint Warehouse & Hybrid Search',
+    date: 'Nov 2026',
+    description:
+      'A PostgreSQL + pgvector warehouse over the CFPB Consumer Complaint Database (19.2M complaints) that serves both analytics and hybrid keyword + semantic search.',
+    highlights: [
+      'Built idempotent ingestion from three CFPB sources and a dbt star schema with SCD Type 2 dimensions and a monthly partitioned fact table over 19.2M complaints.',
+      'Wrote a resumable GPU embedding job that embedded 5.6M narrative chunks (bge-base, 768-d) at ~360 chunks/s, committing each batch and its checkpoint in one transaction.',
+      'Served Reciprocal Rank Fusion hybrid search from a single SQL function behind FastAPI; benchmarked HNSW halfvec at 0.904 recall@100 in 17.5 ms with half the index size of float32.',
+    ],
+    tech: ['Python', 'PostgreSQL/pgvector', 'dbt', 'FastAPI', 'Docker', 'pytest'],
+    repoPath: 'farhanpatel-dev/complaint-warehouse',
+    code: 'https://github.com/farhanpatel-dev/complaint-warehouse',
+    live: '',
+  },
+  {
     name: 'Aerial Crop-Stress Detection & Mapping Platform',
     date: 'Nov 2026',
     description:
