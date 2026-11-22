@@ -28,7 +28,6 @@ export function Contact() {
       aria-labelledby="contact-title"
       className="relative overflow-hidden py-24 md:py-32"
     >
-      <div aria-hidden="true" className="animate-drift-b absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-accent/10 blur-[120px]" />
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <SectionHeading id="contact-title" eyebrow={s.eyebrow} title={s.title} accent={s.accent} intro={s.intro} />
 
