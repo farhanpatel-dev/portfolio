@@ -1,8 +1,6 @@
 import { LazyMotion, MotionConfig } from 'framer-motion';
 import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
-import { ScrollProgress } from './components/ScrollProgress';
-import { CustomCursor } from './components/CustomCursor';
 import { BackToTop } from './components/BackToTop';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
@@ -30,8 +28,6 @@ export default function App() {
       >
         Skip to content
       </a>
-      <ScrollProgress />
-      <CustomCursor />
       <Navbar theme={theme} onToggleTheme={toggle} />
       <main id="main">
         <Hero />
